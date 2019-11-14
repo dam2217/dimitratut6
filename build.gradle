@@ -26,3 +26,7 @@ dependencies {
     providedCompile 'javax.sevlet:javax.serlet-api3.1.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task stage(dependsOn: ['build', 'clean'])
+
+build.mustRunAfter clean
