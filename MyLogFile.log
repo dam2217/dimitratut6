@@ -1,0 +1,6 @@
+Nov 21, 2019 11:09:01 AM MyServlet doGet
+INFO: In constructor
+Nov 21, 2019 11:09:01 AM MyServlet doGet
+WARNING: Running low on memory
+Nov 21, 2019 11:09:01 AM MyServlet doGet
+SEVERE: Can't allocate memory

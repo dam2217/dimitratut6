@@ -30,9 +30,11 @@ public class TestServlet {
         PrintWriter printWriter=new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(printWriter);
         when(request.getServletPath()).thenReturn("/patients");
-        MyServlet myServlet=new HospDB();
+
+        MyServlet myServlet=new MyServlet();
         myServlet.doGet(request,response);
+
         String output=stringWriter.getBuffer().toString();
-        Assert.assertThat(output,is(equalTo("Hello, World!")));
+        Assert.assertThat(output,is(equalTo("Hello, world!")));
     }
 }
