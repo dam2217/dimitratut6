@@ -15,5 +15,5 @@ deploy:
   provider: heroku
   api_key:
       secure: 460ebdd9-ea37-4bb0-ae46-edf24ca98493
-  app: dimitratut6
+  app: eczema-app
   skip_cleanup: true
