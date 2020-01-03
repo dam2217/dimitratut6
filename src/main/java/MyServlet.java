@@ -14,11 +14,35 @@ import java.sql.*;
 @WebServlet(urlPatterns={"/eczemadatabase"}, loadOnStartup = 1)
 
 public class MyServlet extends HttpServlet {
+
     public static void main(String[] args) throws Exception {
 
-        Connection connection = getConnection();
-        Statement stmt = connection.createStatement();
-        String sqlStr = "";
+
+
+//        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
+//        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
+//        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+//        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+//        while (rs.next()) {
+//            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
+//        }
+    }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Connection connection = null;
+        try {
+            connection = getConnection();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String sqlStr;
         try {
             sqlStr = "CREATE TABLE appdata (id SERIAL PRIMARY  KEY, " +
                     "hf varchar(16), hb varchar(16), tf varchar(16), tb varchar(16)," +
@@ -35,20 +59,14 @@ public class MyServlet extends HttpServlet {
         catch (Exception e){
         }
         try{
-          sqlStr = "INSERT INTO appdata (hf,llf,raf) values('Mild', 'Severe', 'Moderate') ";
-          stmt.execute(sqlStr);
+            sqlStr = "INSERT INTO appdata (hf,llf,raf) values('Mild', 'Severe', 'Moderate') ";
+            stmt.execute(sqlStr);
         }catch (Exception e){
         }
-
-
-//        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
-//        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
-//        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-//        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-//        while (rs.next()) {
-//            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
-//        }
     }
+
+
+
 
 
 //    @Override
