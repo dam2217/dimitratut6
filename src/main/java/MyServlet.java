@@ -18,13 +18,36 @@ public class MyServlet extends HttpServlet {
 
         Connection connection = getConnection();
         Statement stmt = connection.createStatement();
-        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
-        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
-        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-        while (rs.next()) {
-            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
+        String sqlStr = "";
+        try {
+            sqlStr = "CREATE TABLE appdata (id SERIAL PRIMARY  KEY, " +
+                    "hf varchar(16), hb varchar(16), tf varchar(16), tb varchar(16)," +
+                    "raf varchar(16), rab varchar(16), laf varchar(16), lab varchar(16)," +
+                    "rlf varchar(16), rlb varchar(16), llf varchar(16), llb varchar(16)," +
+                    "treatmentYorN varchar(6), treatmentUsed varchar(128), temperature varchar(6)," +
+                    "pollutionLevel varchar(20), pollenLevel varchar(20), hfTreated varchar(20)," +
+                    "hbTreated varchar(20), tfTreated varchar(20), tbTreated varchar(20)," +
+                    "rafTreated varchar(20), rabTreated varchar(20), lafTreated varchar(20)," +
+                    "labTreated varchar(20), rlfTreated varchar(20), rlbTreated varchar(20)," +
+                    "llfTreated varchar(20), llbTreated varchar(20), notes varchar(200))";
+            stmt.execute(sqlStr);
         }
+        catch (Exception e){
+        }
+        try{
+          sqlStr = "INSERT INTO appdata (hf,llf,raf) values('Mild', 'Severe', 'Moderate') ";
+          stmt.execute(sqlStr);
+        }catch (Exception e){
+        }
+
+
+//        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
+//        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
+//        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+//        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+//        while (rs.next()) {
+//            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
+//        }
     }
 
 
