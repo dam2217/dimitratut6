@@ -17,31 +17,8 @@ public class MyServlet extends HttpServlet {
 
     public static void main(String[] args) throws Exception {
 
-
-
-//        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
-//        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
-//        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-//        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-//        while (rs.next()) {
-//            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
-//        }
-    }
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection connection = null;
-        try {
-            connection = getConnection();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Connection connection = getConnection();
+        Statement stmt = connection.createStatement();
         String sqlStr;
         try {
             sqlStr = "CREATE TABLE appdata (id SERIAL PRIMARY  KEY, " +
@@ -63,6 +40,14 @@ public class MyServlet extends HttpServlet {
             stmt.execute(sqlStr);
         }catch (Exception e){
         }
+
+//        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
+//        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
+//        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+//        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+//        while (rs.next()) {
+//            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
+//        }
     }
 
 
@@ -83,13 +68,14 @@ public class MyServlet extends HttpServlet {
 
     //Ref 1: code from https://devcenter.heroku.com/articles/connecting-to-relational-databases-on-heroku-with-java
     private static Connection getConnection() throws URISyntaxException, SQLException {
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+//        URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+//        String username = dbUri.getUserInfo().split(":")[0];
+//        String password = dbUri.getUserInfo().split(":")[1];
+//        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
-        return DriverManager.getConnection(dbUrl, username, password);
+        return DriverManager.getConnection(dbUrl);
     }
     //end of reference 1
 }
