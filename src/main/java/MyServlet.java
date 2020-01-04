@@ -16,7 +16,12 @@ import java.sql.*;
 public class MyServlet extends HttpServlet {
 
    // public static void main(String[] args) throws Exception {
-
+   {
+       try {     // Registers the driver
+           Class.forName("org.postgresql.Driver");
+       } catch (Exception e) {
+       }
+   }
         Connection connection;
     {
         try {
