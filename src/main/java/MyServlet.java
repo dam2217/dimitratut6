@@ -15,12 +15,30 @@ import java.sql.*;
 
 public class MyServlet extends HttpServlet {
 
-    public static void main(String[] args) throws Exception {
+   // public static void main(String[] args) throws Exception {
 
-        Connection connection = getConnection();
-        System.out.println(connection);
-        Statement stmt = connection.createStatement();
-        String sqlStr;
+        Connection connection;
+    {
+        try {
+            connection = getConnection();
+        } catch (URISyntaxException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+        Statement stmt;
+    {
+        try {
+            stmt = connection.createStatement();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public String sqlStr;
+
+    {
         try {
             sqlStr = "CREATE TABLE appdata (id SERIAL PRIMARY  KEY, " +
                     "hf varchar(16), hb varchar(16), tf varchar(16), tb varchar(16)," +
@@ -33,14 +51,14 @@ public class MyServlet extends HttpServlet {
                     "labTreated varchar(20), rlfTreated varchar(20), rlbTreated varchar(20)," +
                     "llfTreated varchar(20), llbTreated varchar(20), notes varchar(200))";
             stmt.execute(sqlStr);
+        } catch (Exception e) {
         }
-        catch (Exception e){
-        }
-        try{
-            sqlStr = "INSERT INTO appdata (hf,llf,raf) values('Mild', 'Severe', 'Moderate') ";
-            stmt.execute(sqlStr);
-        }catch (Exception e){
-        }
+    }
+//        try{
+//            sqlStr = "INSERT INTO appdata (hf,llf,raf) values('Mild', 'Severe', 'Moderate') ";
+//            stmt.execute(sqlStr);
+//        }catch (Exception e){
+//        }
 
 //        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
 //        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
@@ -49,7 +67,7 @@ public class MyServlet extends HttpServlet {
 //        while (rs.next()) {
 //            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
 //        }
-    }
+    //}
 
 
 
