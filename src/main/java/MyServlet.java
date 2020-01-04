@@ -18,6 +18,7 @@ public class MyServlet extends HttpServlet {
     public static void main(String[] args) throws Exception {
 
         Connection connection = getConnection();
+        System.out.println(connection);
         Statement stmt = connection.createStatement();
         String sqlStr;
         try {
