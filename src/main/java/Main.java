@@ -17,7 +17,7 @@ public class Main {
         Statement stmt = connection.createStatement();
 
         String sqlStr;
-        try {
+//        try {
             sqlStr = "CREATE TABLE appdata (id SERIAL PRIMARY  KEY, " +
                     "hf varchar(16), hb varchar(16), tf varchar(16), tb varchar(16)," +
                     "raf varchar(16), rab varchar(16), laf varchar(16), lab varchar(16)," +
@@ -29,8 +29,8 @@ public class Main {
                     "labTreated varchar(20), rlfTreated varchar(20), rlbTreated varchar(20)," +
                     "llfTreated varchar(20), llbTreated varchar(20), notes varchar(200))";
             stmt.execute(sqlStr);
-        } catch (Exception e) {
-        }
+//        } catch (Exception e) {
+//        }
     }
     //Ref 1: code from https://devcenter.heroku.com/articles/connecting-to-relational-databases-on-heroku-with-java
     private static Connection getConnection() throws URISyntaxException, SQLException {
