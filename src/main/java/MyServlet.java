@@ -15,6 +15,43 @@ import java.sql.*;
 
 public class MyServlet extends HttpServlet {
 
+    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().write("Hello, world!");
+        try {
+            CreateTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public static void main(String[] args) throws Exception {
+//
+//
+//        try {     // Registers the driver
+//            Class.forName("org.postgresql.Driver");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        Connection conn= getConnection();
+//
+//        try {
+//            Statement s=conn.createStatement();
+//            String sqlStr = "CREATE TABLE test_tiger (will VARCHAR(8), joon INT)";
+//            s.execute (sqlStr);
+//
+////            sqlStr = "INSERT INTO test_tiger (will, joon) values('flome', 4)";
+////            s.execute (sqlStr);
+//
+//            //s.close();
+//            //conn.close();
+//        }       catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//    }
+
+
 //   // public static void main(String[] args) throws Exception {
 //   {
 //       try {     // Registers the driver
@@ -89,15 +126,44 @@ public class MyServlet extends HttpServlet {
 // //   }
 //
 //    //Ref 1: code from https://devcenter.heroku.com/articles/connecting-to-relational-databases-on-heroku-with-java
-//    private static Connection getConnection() throws URISyntaxException, SQLException {
-//        URI dbUri = new URI(System.getenv("DATABASE_URL"));
-//
-//      //  String dbUrl = System.getenv("JDBC_DATABASE_URL");
-//        String username = dbUri.getUserInfo().split(":")[0];
-//       String password = dbUri.getUserInfo().split(":")[1];
-//       String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-//
-//        return DriverManager.getConnection(dbUrl);
-//    }
+    private static Connection getConnection() throws URISyntaxException, SQLException {
+
+        URI dbUri = new URI("DATABASE_URL");
+        System.out.println(dbUri);
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        System.out.println("useramme: ");
+        System.out.println(username);
+        String password = dbUri.getUserInfo().split(":")[1];
+        System.out.println("password");
+        System.out.println(password);
+        System.out.println("host");
+        System.out.println(dbUri.getHost());
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+        return DriverManager.getConnection(dbUrl, username, password);
+    }
+
+    public static void CreateTable() throws Exception {
+
+        try {     // Registers the driver
+            Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Connection conn= getConnection();
+
+        try {
+            Statement s=conn.createStatement();
+            String sqlStr = "CREATE TABLE test_tiger (will VARCHAR(8), joon INT)";
+            s.execute (sqlStr);
+
+            s.close();
+            conn.close();
+        }       catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 //    //end of reference 1
 }
