@@ -1,3 +1,5 @@
+import sun.rmi.runtime.Log;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,12 +11,15 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 
 @WebServlet(urlPatterns={"/eczemadatabase"}, loadOnStartup = 1)
 
 public class MyServlet extends HttpServlet {
+
+    private static final Logger log =Logger.getLogger(MyServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +32,7 @@ public class MyServlet extends HttpServlet {
             IOException {
         String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         resp.setContentType("text/html");
-        System.out.println(reqBody);
+        log.info(reqBody);
 //        try {
 //            Connection conn= getConnection();
 //            Statement s=conn.createStatement();
