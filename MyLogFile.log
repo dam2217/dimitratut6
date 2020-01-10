@@ -1,6 +1,2 @@
-Nov 21, 2019 11:09:01 AM MyServlet doGet
-INFO: In constructor
-Nov 21, 2019 11:09:01 AM MyServlet doGet
-WARNING: Running low on memory
-Nov 21, 2019 11:09:01 AM MyServlet doGet
-SEVERE: Can't allocate memory
+Jan 10, 2020 3:13:37 PM MyServlet doPost
+INFO: Hello servlet

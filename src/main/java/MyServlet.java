@@ -1,12 +1,16 @@
+import com.google.gson.Gson;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -19,7 +23,7 @@ public class MyServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//
+
         resp.getWriter().write("Hello, world!");
 
 
@@ -28,9 +32,14 @@ public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
         String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        Gson gson = new Gson();
+        LogEntrySerial test = gson.fromJson(reqBody, LogEntrySerial.class);
+        LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
         resp.setContentType("text/html");
         resp.getWriter().write("Thank you client!");
+        req.getServletPath();
         log.info(reqBody);
+        System.out.println(test.location);
 //        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 //        resp.setContentType("text/html");
 //        log.info(reqBody);
