@@ -1,15 +1,11 @@
-import sun.rmi.runtime.Log;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.sql.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -23,6 +19,7 @@ public class MyServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
         resp.getWriter().write("Hello, world!");
 
 
@@ -32,11 +29,16 @@ public class MyServlet extends HttpServlet {
             IOException {
         String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         resp.setContentType("text/html");
-        log.info(reqBody);
+        resp.getWriter().write("Thank you client!");
+//        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+//        resp.setContentType("text/html");
+//        log.info(reqBody);
+//
 //        try {
 //            Connection conn= getConnection();
 //            Statement s=conn.createStatement();
-//            String sqlStr = "INSERT INTO test_tiger (will) values('req)";
+//            String sqlStr = "INSERT INTO test_tiger (will) values(req)";
+//            System.out.println(req);
 //            s.execute (sqlStr);
 //        } catch (URISyntaxException e) {
 //            e.printStackTrace();
