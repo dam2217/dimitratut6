@@ -30,6 +30,7 @@ public class MyServlet extends HttpServlet {
         String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         resp.setContentType("text/html");
         resp.getWriter().write("Thank you client!");
+        log.info(reqBody);
 //        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 //        resp.setContentType("text/html");
 //        log.info(reqBody);
