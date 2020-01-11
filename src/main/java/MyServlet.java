@@ -32,6 +32,7 @@ public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
         String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        System.out.println("BODY: " + reqBody);
         Gson gson = new Gson();
         LogEntrySerial test = gson.fromJson(reqBody, LogEntrySerial.class);
         LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
