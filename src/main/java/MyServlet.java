@@ -44,7 +44,7 @@ public class MyServlet extends HttpServlet {
         try {
             Connection conn= getConnection();
             Statement s=conn.createStatement();
-            String sqlStr = "INSERT INTO userdata (location) values("+ test.location +")";
+            String sqlStr = "INSERT INTO userdata (location) values('+ test.location +')";
             s.execute (sqlStr);
         } catch (URISyntaxException e) {
             e.printStackTrace();
