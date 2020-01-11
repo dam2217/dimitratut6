@@ -41,22 +41,16 @@ public class MyServlet extends HttpServlet {
         req.getServletPath();
         log.info(reqBody);
         System.out.println(test.location);
-//        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//        resp.setContentType("text/html");
-//        log.info(reqBody);
-//
-//        try {
-//            Connection conn= getConnection();
-//            Statement s=conn.createStatement();
-//            String sqlStr = "INSERT INTO test_tiger (will) values(req)";
-//            System.out.println(req);
-//            s.execute (sqlStr);
-//        } catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        resp.getWriter().write("It works");
+        try {
+            Connection conn= getConnection();
+            Statement s=conn.createStatement();
+            String sqlStr = "INSERT INTO userdata (hf) values("+ test.location +")";
+            s.execute (sqlStr);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -99,6 +93,10 @@ public class MyServlet extends HttpServlet {
         System.out.println(dbUrl);
 
         return DriverManager.getConnection(dbUrl, username, password);
+    }
+    private void WritetoDatabase(){
+
+
     }
 
 
