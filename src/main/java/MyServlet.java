@@ -31,7 +31,9 @@ public class MyServlet extends HttpServlet {
 
         ResultSet rset=s.executeQuery(sqlStr);
         while(rset.next()){
-            System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
+            String test = rset.getString("date");
+            System.out.println(test);
+            //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
         }    rset.close();
         s.close();
         conn.close();
