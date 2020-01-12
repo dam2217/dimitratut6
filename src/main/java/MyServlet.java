@@ -42,9 +42,9 @@ public class MyServlet extends HttpServlet {
                 datasend = datasend+"\"date\":\""+rset.getString("date")+
                         "\",\"time\":\""+ rset.getString("time") +
                        "\",\"hb\":\""+rset.getString("hb")+
-//                        "\",\"hbTreated\":\""+rset.getString("hbtreated")+
+                        "\",\"hbTreated\":\""+rset.getString("hbtreated")+
                         "\",\"hf\":\""+rset.getString("hf") +
-//                        "\",\"hfTreated\":\""+ rset.getString("hftreated") +
+                        "\",\"hfTreated\":\""+ rset.getString("hftreated") +
 //                        "\",\"humidity\":\""+ rset.getString("humidity") +
 //                        "\",\"lab\":\""+ rset.getString("lab") +
 //                        "\",\"labTreated\":\""+ rset.getString("labtreated") +
