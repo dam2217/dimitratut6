@@ -34,15 +34,15 @@ public class MyServlet extends HttpServlet {
             System.out.println("e");
 
             System.out.println("sql"+sqlStr);
-            System.out.println("Head front" + rset.getString("hf"));
-            boolean isItTrue;
-            while((isItTrue = rset.next()) == true){
+            System.out.println("Head front"+rset.getString("hf"));
+            System.out.println("why");
+            while(rset.next()){
                 System.out.println("f");
                 System.out.println();
-                datasend = datasend + "\"date\":\""+rset.getString("date")+
-                        "\",\"hb\":\""+ rset.getString("hb")+
-                        "\",\"hbTreated\":\""+ rset.getString("hbtreated")+
-                        "\",\"hf\":\""+ rset.getString("hf") +
+                datasend = datasend+"\"date\":\""+rset.getString("date")+
+                        "\",\"hb\":\""+rset.getString("hb")+
+                        "\",\"hbTreated\":\""+rset.getString("hbtreated")+
+                        "\",\"hf\":\""+rset.getString("hf") +
                         "\",\"hfTreated\":\""+ rset.getString("hftreated") +
                         "\",\"humidity\":\""+ rset.getString("humidity") +
                         "\",\"lab\":\""+ rset.getString("lab") +
