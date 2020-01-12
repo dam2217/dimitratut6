@@ -69,13 +69,17 @@ public class MyServlet extends HttpServlet {
 
 
             ResultSet rset=s.executeQuery(sqlStr);
-
+            String datasend = "{";
             System.out.println("sql"+sqlStr);
             while(rset.next()){
-                String testt = rset.getString("date")+" "+ rset.getString("time");
-                System.out.println(testt);
+                datasend = datasend + "\"date\":\""+rset.getString("date")+"\",\"time\":\""+
+                        rset.getString("time")+"\"";
+
                 //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
-            }    rset.close();
+            }
+            datasend = datasend + "}";
+            System.out.println(datasend);
+            rset.close();
             s.close();
             conn.close();
         }catch (Exception e){
