@@ -28,7 +28,7 @@ public class MyServlet extends HttpServlet {
             System.out.println("b");
             Statement s=conn.createStatement();
             System.out.println("c");
-            String sqlStr = "SELECT * FROM userdata WHERE id=1";
+            String sqlStr = "SELECT * FROM userdata WHERE id>=1";
             System.out.println("d");
             ResultSet rset=s.executeQuery(sqlStr);
             System.out.println("e");
@@ -68,7 +68,7 @@ public class MyServlet extends HttpServlet {
 //                        "\",\"tbTreated\":\""+ rset.getString("tbTreated") +
 //                        "\",\"tf\":\""+ rset.getString("tf") +
 //                        "\",\"tfTreated\":\""+ rset.getString("tfTreated") +
-//                        "\",\"time\":\""+ rset.getString("time") +
+                        "\",\"time\":\""+ rset.getString("time") +
 //                        "\",\"treatmentUsed\":\""+ rset.getString("treatmentUsed") +
 //                        "\",\"treatmentYorN\":\""+ rset.getString("treatmentYorN") +
                         "split";
