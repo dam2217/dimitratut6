@@ -41,7 +41,7 @@ public class MyServlet extends HttpServlet {
                 System.out.println();
                 datasend = datasend+"\"date\":\""+rset.getString("date")+
                         "\",\"time\":\""+ rset.getString("time") +
-//                        "\",\"hb\":\""+rset.getString("hb")+
+                       "\",\"hb\":\""+rset.getString("hb")+
 //                        "\",\"hbTreated\":\""+rset.getString("hbtreated")+
                         "\",\"hf\":\""+rset.getString("hf") +
 //                        "\",\"hfTreated\":\""+ rset.getString("hftreated") +
@@ -73,7 +73,7 @@ public class MyServlet extends HttpServlet {
 
 //                        "\",\"treatmentUsed\":\""+ rset.getString("treatmentused") +
 //                        "\",\"treatmentYorN\":\""+ rset.getString("treatmentyorn") +
-                        "split";
+                        "\"split";
                 System.out.println("A");
                 System.out.println(datasend);
                 //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
