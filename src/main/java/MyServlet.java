@@ -23,7 +23,7 @@ public class MyServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String datasend = "";
+        String datasend = "dick";
         try{ Connection conn =  getConnection();
             Statement s=conn.createStatement();
             String sqlStr = "SELECT * FROM userdata WHERE id<3";
