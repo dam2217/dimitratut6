@@ -28,7 +28,7 @@ public class MyServlet extends HttpServlet {
             System.out.println("b");
             Statement s=conn.createStatement();
             System.out.println("c");
-            String sqlStr = "SELECT * FROM test WHERE id>=1";
+            String sqlStr = "SELECT * FROM usersdata WHERE id>=1";
             System.out.println("d");
             ResultSet rset=s.executeQuery(sqlStr);
             System.out.println("e");
@@ -106,7 +106,7 @@ public class MyServlet extends HttpServlet {
         try {
             Connection conn= getConnection();
             Statement s=conn.createStatement();
-            String sqlStr = "INSERT INTO test (date, time, hf, hb, tf, tb, raf, rab, laf, lab, " +
+            String sqlStr = "INSERT INTO usersdata (date, time, hf, hb, tf, tb, raf, rab, laf, lab, " +
                     "rlf, rlb, llf, llb, treatmentyorn, treatmentused, location, temperature, humidity, " +
                     "pollutionlevel, pollenlevel, hftreated, hbtreated, tftreated, tbtreated, " +
                     "raftreated, rabtreated, laftreated, labtreated, rlftreated, rlbtreated, " +
