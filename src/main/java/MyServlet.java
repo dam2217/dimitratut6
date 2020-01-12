@@ -67,7 +67,10 @@ public class MyServlet extends HttpServlet {
             Statement s=conn.createStatement();
             String sqlStr = "SELECT * FROM userdata WHERE id>1";
 
+
             ResultSet rset=s.executeQuery(sqlStr);
+            System.out.println("rset"+rset);
+            System.out.println("sql"+sqlStr);
             while(rset.next()){
                 String testt = rset.getString("date");
                 System.out.println(testt);
