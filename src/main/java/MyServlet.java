@@ -26,8 +26,21 @@ public class MyServlet extends HttpServlet {
 
         resp.getWriter().write("Hello, world!");
 
-
+        try {
+            Connection conn = getConnection();
+            Statement s = conn.createStatement();
+            String sqlStr = "SELECT * FROM patients WHERE id >= 1";
+            s.execute(sqlStr);
+        }
+        catch (URISyntaxException e) {
+        e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
@@ -61,23 +74,6 @@ public class MyServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-
-
-    public static void main(String[] args) throws Exception {
-
-        Connection conn= getConnection();
-
-        try {
-            Statement s=conn.createStatement();
-            String sqlStr = "CREATE TABLE test_tiger (will VARCHAR(8), joon INT)";
-            s.execute (sqlStr);
-
-        }       catch (Exception e){
-            e.printStackTrace();
-        }
-
     }
 
 
