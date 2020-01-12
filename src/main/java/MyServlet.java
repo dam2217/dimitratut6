@@ -25,12 +25,17 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String datasend = "dick";
         try{ Connection conn =  getConnection();
+            System.out.println("b");
             Statement s=conn.createStatement();
-            String sqlStr = "SELECT * FROM userdata WHERE id<3";
+            System.out.println("c");
+            String sqlStr = "SELECT * FROM userdata WHERE id=1";
+            System.out.println("d");
             ResultSet rset=s.executeQuery(sqlStr);
+            System.out.println("e");
 
             System.out.println("sql"+sqlStr);
             while(rset.next()){
+                System.out.println("f");
                 datasend = datasend + "\"date\":\""+rset.getString("date")+
                         "\",\"hb\":\""+ rset.getString("hb")+
                         "\",\"hbTreated\":\""+ rset.getString("hbTreated")+
@@ -65,7 +70,8 @@ public class MyServlet extends HttpServlet {
                         "\",\"treatmentUsed\":\""+ rset.getString("treatmentUsed") +
                         "\",\"treatmentYorN\":\""+ rset.getString("treatmentYorN") +
                         "split ";
-
+                System.out.println("A");
+                System.out.println(datasend);
                 //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
             }
             System.out.println(datasend);
