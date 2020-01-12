@@ -90,7 +90,7 @@ public class MyServlet extends HttpServlet {
         LogEntrySerial test = gson.fromJson(reqBody, LogEntrySerial.class);
         LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
         resp.setContentType("text/html");
-        resp.getWriter().write("Log saved!");
+
         req.getServletPath();
         log.info(reqBody);
         System.out.println(test.location);
@@ -113,6 +113,7 @@ public class MyServlet extends HttpServlet {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+            resp.getWriter().write("Log saved!");
         }
 //        try{ Connection conn =  getConnection();
 //            Statement s=conn.createStatement();
