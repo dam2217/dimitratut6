@@ -71,7 +71,7 @@ public class MyServlet extends HttpServlet {
                         "\",\"time\":\""+ rset.getString("time") +
                         "\",\"treatmentUsed\":\""+ rset.getString("treatmentUsed") +
                         "\",\"treatmentYorN\":\""+ rset.getString("treatmentYorN") +
-                        "split ";
+                        "split";
                 System.out.println("A");
                 System.out.println(datasend);
                 //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
