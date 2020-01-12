@@ -1,5 +1,8 @@
 import java.io.Serializable;
 
+//mimics class in app - used for sending JSON across
+//contains all the information from the log user inputs
+
 public class LogEntrySerial implements Serializable {
     public String date;
     public String time;
@@ -36,6 +39,7 @@ public class LogEntrySerial implements Serializable {
     public String llbTreated;
     public String notes;
 
+    //constructor
     public LogEntrySerial(String datenow, String timenow, String headf, String headb, String torsof,
                           String torsob, String rarmf,
                           String rarmb, String larmf, String larmb,

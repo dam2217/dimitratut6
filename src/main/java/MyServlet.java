@@ -1,5 +1,4 @@
 import com.google.gson.Gson;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,25 +20,17 @@ public class MyServlet extends HttpServlet {
 
     private static final Logger log =Logger.getLogger(MyServlet.class.getName());
 
+    //Getting Data from database and sending it across
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String datasend = "";
-        try{ Connection conn =  getConnection();
-            System.out.println("b");
+        String datasend = "";           //creating string to send across
+        try{
+            Connection conn =  getConnection();     //getting the connection
             Statement s=conn.createStatement();
-            System.out.println("c");
-            String sqlStr = "SELECT * FROM usersdata WHERE id>=1";
-            System.out.println("d");
-            ResultSet rset=s.executeQuery(sqlStr);
-            System.out.println("e");
-
-            System.out.println("sql"+sqlStr);
-////            System.out.println("Head front"+rset.getString("hf"));
-            System.out.println("why");
-            while(rset.next()){
-                System.out.println("f");
+            String sqlStr = "SELECT * FROM usersdata WHERE id>=1";        //SQL command
+            ResultSet rset=s.executeQuery(sqlStr);              //executing SQL command
+            while(rset.next()){ //creating string with all the column values for each row
                 datasend = datasend+"\"date\":\""+rset.getString("date")+
-
                        "\",\"hb\":\""+rset.getString("hb")+
                         "\",\"hbTreated\":\""+rset.getString("hbtreated")+
                         "\",\"hf\":\""+rset.getString("hf") +
@@ -73,39 +64,32 @@ public class MyServlet extends HttpServlet {
                         "\",\"treatmentUsed\":\""+ rset.getString("treatmentused") +
                         "\",\"treatmentYorN\":\""+ rset.getString("treatmentyorn") +
                         "\"split";
-                System.out.println("A");
-                System.out.println(datasend);
-                //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
             }
-            //System.out.println(datasend);
             rset.close();
             s.close();
-            conn.close();
+            conn.close();           //closing connections
         }catch (Exception e){
-            System.out.println("doesn't print");
+            System.out.println("doesn't print");    //error message
         }
-        resp.getWriter().write(datasend);
-
+        resp.getWriter().write(datasend);           //sending string as a response to App's GET request
     }
 
 
-
+    //Receiving data from App and putting it into the database
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
-        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        System.out.println("BODY: " + reqBody);
-        Gson gson = new Gson();
-        LogEntrySerial test = gson.fromJson(reqBody, LogEntrySerial.class);
+        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));     //reading in the request
+        Gson gson = new Gson();         //creating new GSON object to pass request into
+        LogEntrySerial test = gson.fromJson(reqBody, LogEntrySerial.class);     //passing JSON into LogEntrySerial
         LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
-        resp.setContentType("text/html");
-
-        req.getServletPath();
-        log.info(reqBody);
-        System.out.println(test.location);
+        resp.setContentType("text/html");           //setting response type to HTML
+        req.getServletPath();                       //returning path of local host
+        log.info(reqBody);                          //logging the request in Logs (viewed on Heroku logs)
         try {
-            Connection conn= getConnection();
-            Statement s=conn.createStatement();
+            Connection conn= getConnection();           //making the connection to database
+            Statement s=conn.createStatement();         //creating a query
+            //inserting values from request into database in the according columns (table already created)
             String sqlStr = "INSERT INTO usersdata (date, time, hf, hb, tf, tb, raf, rab, laf, lab, " +
                     "rlf, rlb, llf, llb, treatmentyorn, treatmentused, location, temperature, humidity, " +
                     "pollutionlevel, pollenlevel, hftreated, hbtreated, tftreated, tbtreated, " +
@@ -117,66 +101,28 @@ public class MyServlet extends HttpServlet {
                     "'"+ test.pollenLevel +"','"+ test.hfTreated +"','"+ test.hbTreated +"','"+ test.tfTreated +"','"+ test.tbTreated +"'," +
                     "'"+ test.rafTreated +"','"+ test.rabTreated +"','"+ test.lafTreated +"','"+ test.labTreated +"','"+ test.rlfTreated +"'" +
                     ",'"+ test.rlbTreated +"','"+ test.llfTreated +"','"+ test.llbTreated +"','"+ test.notes +"')";
-            s.execute (sqlStr);
+            s.execute (sqlStr);         //executing query
         } catch (URISyntaxException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-            resp.getWriter().write("Log saved!");
         }
-//        try{ Connection conn =  getConnection();
-//            Statement s=conn.createStatement();
-//            String sqlStr = "SELECT * FROM userdata WHERE id>1";
-//
-//
-//            ResultSet rset=s.executeQuery(sqlStr);
-//            String datasend = "{";
-//            System.out.println("sql"+sqlStr);
-//            while(rset.next()){
-//                datasend = datasend + "\"date\":\""+rset.getString("date")+"\",\"time\":\""+
-//                        rset.getString("time")+"\" split ";
-//
-//                //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
-//            }
-//            datasend = datasend + "}";
-//            System.out.println(datasend);
-//            rset.close();
-//            s.close();
-//            conn.close();
-//        }catch (Exception e){
-//            System.out.println("doesn't print");
-//        }
+        resp.getWriter().write("Log saved!");           //sending message to app when log has been saved
     }
 
 
 //    //Ref 1: code from https://devcenter.heroku.com/articles/connecting-to-relational-databases-on-heroku-with-java
     private static Connection getConnection() throws URISyntaxException, SQLException {
-
-        //URI dbUri = new URI(System.getenv("DATABASE_URL"));
+       //Below is the link to the database, supposed to use DATABASE_URL, but code wouldn't recognize it
         URI dbUri = new URI("postgres://jhwkfsqyvfessl:fd84735e59925c6062e8d5f7e866afa2b029a4a61a4519e7a0ebf59b3e1b197a@ec2-54-247-82-14.eu-west-1.compute.amazonaws.com:5432/d4a6ke5jmf5tsm");
-        System.out.println(dbUri);
-
+        //Getting necessary credentials from link
         String username = dbUri.getUserInfo().split(":")[0];
-        System.out.println("useramme: ");
-        System.out.println(username);
         String password = dbUri.getUserInfo().split(":")[1];
-        System.out.println("password");
-        System.out.println(password);
-        System.out.println("host");
-        System.out.println(dbUri.getHost());
-        System.out.println(dbUri.getPath());
+        //turning link into jdbc link
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() +
                 "?&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=" + username + "&password=" + password;
-        System.out.println("help");
-        System.out.println(dbUrl);
-
+        //returning the correct link for the database
         return DriverManager.getConnection(dbUrl, username, password);
     }
-    private void WritetoDatabase(){
-
-
-    }
-
-
 //    //end of reference 1
 }
