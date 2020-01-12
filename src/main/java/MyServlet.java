@@ -25,17 +25,18 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         resp.getWriter().write("Hello, world!");
+        try{ Connection conn =  getConnection();
+        Statement s=conn.createStatement();
+        String sqlStr = "SELECT * FROM userdata WHERE id>1";
 
-        try {
-            Connection conn = getConnection();
-            Statement s = conn.createStatement();
-            String sqlStr = "SELECT * FROM userdata WHERE id >= 1";
-            s.execute(sqlStr);
-        }
-        catch (URISyntaxException e) {
-        e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        ResultSet rset=s.executeQuery(sqlStr);
+        while(rset.next()){
+            System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
+        }    rset.close();
+        s.close();
+        conn.close();
+        }catch (Exception e){
+
         }
     }
 
