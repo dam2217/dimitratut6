@@ -28,7 +28,7 @@ public class MyServlet extends HttpServlet {
             System.out.println("b");
             Statement s=conn.createStatement();
             System.out.println("c");
-            String sqlStr = "SELECT * FROM userdata WHERE id>=1";
+            String sqlStr = "SELECT * FROM test WHERE id>=1";
             System.out.println("d");
             ResultSet rset=s.executeQuery(sqlStr);
             System.out.println("e");
