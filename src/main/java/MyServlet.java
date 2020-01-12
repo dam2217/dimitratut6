@@ -34,6 +34,7 @@ public class MyServlet extends HttpServlet {
             System.out.println("e");
 
             System.out.println("sql"+sqlStr);
+            System.out.println(rset.next());
             while(rset.next()){
                 System.out.println("f");
                 datasend = datasend + "\"date\":\""+rset.getString("date")+
