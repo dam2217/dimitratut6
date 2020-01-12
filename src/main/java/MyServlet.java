@@ -40,38 +40,39 @@ public class MyServlet extends HttpServlet {
                 System.out.println("f");
                 System.out.println();
                 datasend = datasend+"\"date\":\""+rset.getString("date")+
-                        "\",\"hb\":\""+rset.getString("hb")+
-                        "\",\"hbTreated\":\""+rset.getString("hbtreated")+
-                        "\",\"hf\":\""+rset.getString("hf") +
-                        "\",\"hfTreated\":\""+ rset.getString("hftreated") +
-                        "\",\"humidity\":\""+ rset.getString("humidity") +
-                        "\",\"lab\":\""+ rset.getString("lab") +
-                        "\",\"labTreated\":\""+ rset.getString("labtreated") +
-                        "\",\"laf\":\""+ rset.getString("laf") +
-                        "\",\"lafTreated\":\""+ rset.getString("laftreated") +
-                        "\",\"llb\":\""+ rset.getString("llb") +
-                        "\",\"llbTreated\":\""+ rset.getString("llbtreated") +
-                        "\",\"llf\":\""+ rset.getString("llf") +
-                        "\",\"llfTreated\":\""+ rset.getString("llftreated") +
-                        "\",\"location\":\""+ rset.getString("location") +
-                        "\",\"notes\":\""+ rset.getString("notes") +
-                        "\",\"pollenLevel\":\""+ rset.getString("pollenlevel") +
-                        "\",\"pollutionLevel\":\""+ rset.getString("pollutionlevel") +
-                        "\",\"rab\":\""+ rset.getString("rab") +
-                        "\",\"rabTreated\":\""+ rset.getString("rabtreated") +
-                        "\",\"raf\":\""+ rset.getString("raf") +
-                        "\",\"rafTreated\":\""+ rset.getString("raftreated") +
-                        "\",\"rlb\":\""+ rset.getString("rlb") +
-                        "\",\"rlbTreated\":\""+ rset.getString("rlbtreated") +
-                        "\",\"rlf\":\""+ rset.getString("rlf") +
-                        "\",\"rlfTreated\":\""+ rset.getString("rlftreated") +
-                        "\",\"tb\":\""+ rset.getString("tb") +
-                        "\",\"tbTreated\":\""+ rset.getString("tbtreated") +
-                        "\",\"tf\":\""+ rset.getString("tf") +
-                        "\",\"tfTreated\":\""+ rset.getString("tftreated") +
                         "\",\"time\":\""+ rset.getString("time") +
-                        "\",\"treatmentUsed\":\""+ rset.getString("treatmentused") +
-                        "\",\"treatmentYorN\":\""+ rset.getString("treatmentyorn") +
+//                        "\",\"hb\":\""+rset.getString("hb")+
+//                        "\",\"hbTreated\":\""+rset.getString("hbtreated")+
+                        "\",\"hf\":\""+rset.getString("hf") +
+//                        "\",\"hfTreated\":\""+ rset.getString("hftreated") +
+//                        "\",\"humidity\":\""+ rset.getString("humidity") +
+//                        "\",\"lab\":\""+ rset.getString("lab") +
+//                        "\",\"labTreated\":\""+ rset.getString("labtreated") +
+//                        "\",\"laf\":\""+ rset.getString("laf") +
+//                        "\",\"lafTreated\":\""+ rset.getString("laftreated") +
+//                        "\",\"llb\":\""+ rset.getString("llb") +
+//                        "\",\"llbTreated\":\""+ rset.getString("llbtreated") +
+//                        "\",\"llf\":\""+ rset.getString("llf") +
+//                        "\",\"llfTreated\":\""+ rset.getString("llftreated") +
+//                        "\",\"location\":\""+ rset.getString("location") +
+//                        "\",\"notes\":\""+ rset.getString("notes") +
+//                        "\",\"pollenLevel\":\""+ rset.getString("pollenlevel") +
+//                        "\",\"pollutionLevel\":\""+ rset.getString("pollutionlevel") +
+//                        "\",\"rab\":\""+ rset.getString("rab") +
+//                        "\",\"rabTreated\":\""+ rset.getString("rabtreated") +
+//                        "\",\"raf\":\""+ rset.getString("raf") +
+//                        "\",\"rafTreated\":\""+ rset.getString("raftreated") +
+//                        "\",\"rlb\":\""+ rset.getString("rlb") +
+//                        "\",\"rlbTreated\":\""+ rset.getString("rlbtreated") +
+//                        "\",\"rlf\":\""+ rset.getString("rlf") +
+//                        "\",\"rlfTreated\":\""+ rset.getString("rlftreated") +
+//                        "\",\"tb\":\""+ rset.getString("tb") +
+//                        "\",\"tbTreated\":\""+ rset.getString("tbtreated") +
+//                        "\",\"tf\":\""+ rset.getString("tf") +
+//                        "\",\"tfTreated\":\""+ rset.getString("tftreated") +
+
+//                        "\",\"treatmentUsed\":\""+ rset.getString("treatmentused") +
+//                        "\",\"treatmentYorN\":\""+ rset.getString("treatmentyorn") +
                         "split";
                 System.out.println("A");
                 System.out.println(datasend);
