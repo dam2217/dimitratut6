@@ -45,9 +45,9 @@ public class MyServlet extends HttpServlet {
                         "\",\"hbTreated\":\""+rset.getString("hbtreated")+
                         "\",\"hf\":\""+rset.getString("hf") +
                         "\",\"hfTreated\":\""+ rset.getString("hftreated") +
-//                        "\",\"humidity\":\""+ rset.getString("humidity") +
-//                        "\",\"lab\":\""+ rset.getString("lab") +
-//                        "\",\"labTreated\":\""+ rset.getString("labtreated") +
+                        "\",\"humidity\":\""+ rset.getString("humidity") +
+                        "\",\"lab\":\""+ rset.getString("lab") +
+                        "\",\"labTreated\":\""+ rset.getString("labtreated") +
 //                        "\",\"laf\":\""+ rset.getString("laf") +
 //                        "\",\"lafTreated\":\""+ rset.getString("laftreated") +
 //                        "\",\"llb\":\""+ rset.getString("llb") +
