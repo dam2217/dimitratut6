@@ -26,7 +26,7 @@ public class MyServlet extends HttpServlet {
         String datasend = null;
         try{ Connection conn =  getConnection();
             Statement s=conn.createStatement();
-            String sqlStr = "SELECT * FROM userdata WHERE id>=1";
+            String sqlStr = "SELECT * FROM userdata WHERE id=1";
             ResultSet rset=s.executeQuery(sqlStr);
 
             System.out.println("sql"+sqlStr);
