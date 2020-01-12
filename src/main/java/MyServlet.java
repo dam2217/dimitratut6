@@ -69,10 +69,10 @@ public class MyServlet extends HttpServlet {
 
 
             ResultSet rset=s.executeQuery(sqlStr);
-            System.out.println("rset"+rset);
+
             System.out.println("sql"+sqlStr);
             while(rset.next()){
-                String testt = rset.getString("date");
+                String testt = rset.getString("date")+" "+ rset.getString("time");
                 System.out.println(testt);
                 //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
             }    rset.close();
