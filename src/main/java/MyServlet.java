@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.Response;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
@@ -25,6 +26,30 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         resp.getWriter().write("Hello, world!");
+        String datasend = "{";
+        try{ Connection conn =  getConnection();
+            Statement s=conn.createStatement();
+            String sqlStr = "SELECT * FROM userdata WHERE id>1";
+
+
+            ResultSet rset=s.executeQuery(sqlStr);
+
+            System.out.println("sql"+sqlStr);
+            while(rset.next()){
+                datasend = datasend + "\"date\":\""+rset.getString("date")+"\",\"time\":\""+
+                        rset.getString("time")+"\" split ";
+
+                //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
+            }
+            datasend = datasend + "}";
+            System.out.println(datasend);
+            rset.close();
+            s.close();
+            conn.close();
+        }catch (Exception e){
+            System.out.println("doesn't print");
+        }
+        resp.getWriter().write(datasend);
 
     }
 
@@ -73,7 +98,7 @@ public class MyServlet extends HttpServlet {
             System.out.println("sql"+sqlStr);
             while(rset.next()){
                 datasend = datasend + "\"date\":\""+rset.getString("date")+"\",\"time\":\""+
-                        rset.getString("time")+"\"";
+                        rset.getString("time")+"\" split ";
 
                 //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
             }
