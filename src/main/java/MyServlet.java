@@ -26,7 +26,7 @@ public class MyServlet extends HttpServlet {
         String datasend = null;
         try{ Connection conn =  getConnection();
             Statement s=conn.createStatement();
-            String sqlStr = "SELECT * FROM userdata WHERE id=1";
+            String sqlStr = "SELECT * FROM userdata WHERE id<3";
             ResultSet rset=s.executeQuery(sqlStr);
 
             System.out.println("sql"+sqlStr);
@@ -35,35 +35,35 @@ public class MyServlet extends HttpServlet {
                         "\",\"hb\":\""+ rset.getString("hb")+
                         "\",\"hbTreated\":\""+ rset.getString("hbTreated")+
                         "\",\"hf\":\""+ rset.getString("hf") +
-//                        "\",\"hfTreated\":\""+ rset.getString("hfTreated") +
-//                        "\",\"humidity\":\""+ rset.getString("humidity") +
-//                        "\",\"lab\":\""+ rset.getString("lab") +
-//                        "\",\"labTreated\":\""+ rset.getString("labTreated") +
-//                        "\",\"laf\":\""+ rset.getString("laf") +
-//                        "\",\"lafTreated\":\""+ rset.getString("lafTreated") +
-//                        "\",\"llb\":\""+ rset.getString("llb") +
-//                        "\",\"llbTreated\":\""+ rset.getString("llbTreated") +
-//                        "\",\"llf\":\""+ rset.getString("llf") +
-//                        "\",\"llfTreated\":\""+ rset.getString("llfTreated") +
-//                        "\",\"location\":\""+ rset.getString("location") +
-//                        "\",\"notes\":\""+ rset.getString("notes") +
-//                        "\",\"pollenLevel\":\""+ rset.getString("pollenLevel") +
-//                        "\",\"pollutionLevel\":\""+ rset.getString("pollutionLevel") +
-//                        "\",\"rab\":\""+ rset.getString("rab") +
-//                        "\",\"rabTreated\":\""+ rset.getString("rabTreated") +
-//                        "\",\"raf\":\""+ rset.getString("raf") +
-//                        "\",\"rafTreated\":\""+ rset.getString("rafTreated") +
-//                        "\",\"rlb\":\""+ rset.getString("rlb") +
-//                        "\",\"rlbTreated\":\""+ rset.getString("rlbTreated") +
-//                        "\",\"rlf\":\""+ rset.getString("rlf") +
-//                        "\",\"rlfTreated\":\""+ rset.getString("rlfTreated") +
-//                        "\",\"tb\":\""+ rset.getString("tb") +
-//                        "\",\"tbTreated\":\""+ rset.getString("tbTreated") +
-//                        "\",\"tf\":\""+ rset.getString("tf") +
-//                        "\",\"tfTreated\":\""+ rset.getString("tfTreated") +
-//                        "\",\"time\":\""+ rset.getString("time") +
-//                        "\",\"treatmentUsed\":\""+ rset.getString("treatmentUsed") +
-//                        "\",\"treatmentYorN\":\""+ rset.getString("treatmentYorN") +
+                        "\",\"hfTreated\":\""+ rset.getString("hfTreated") +
+                        "\",\"humidity\":\""+ rset.getString("humidity") +
+                        "\",\"lab\":\""+ rset.getString("lab") +
+                        "\",\"labTreated\":\""+ rset.getString("labTreated") +
+                        "\",\"laf\":\""+ rset.getString("laf") +
+                        "\",\"lafTreated\":\""+ rset.getString("lafTreated") +
+                        "\",\"llb\":\""+ rset.getString("llb") +
+                        "\",\"llbTreated\":\""+ rset.getString("llbTreated") +
+                        "\",\"llf\":\""+ rset.getString("llf") +
+                        "\",\"llfTreated\":\""+ rset.getString("llfTreated") +
+                        "\",\"location\":\""+ rset.getString("location") +
+                        "\",\"notes\":\""+ rset.getString("notes") +
+                        "\",\"pollenLevel\":\""+ rset.getString("pollenLevel") +
+                        "\",\"pollutionLevel\":\""+ rset.getString("pollutionLevel") +
+                        "\",\"rab\":\""+ rset.getString("rab") +
+                        "\",\"rabTreated\":\""+ rset.getString("rabTreated") +
+                        "\",\"raf\":\""+ rset.getString("raf") +
+                        "\",\"rafTreated\":\""+ rset.getString("rafTreated") +
+                        "\",\"rlb\":\""+ rset.getString("rlb") +
+                        "\",\"rlbTreated\":\""+ rset.getString("rlbTreated") +
+                        "\",\"rlf\":\""+ rset.getString("rlf") +
+                        "\",\"rlfTreated\":\""+ rset.getString("rlfTreated") +
+                        "\",\"tb\":\""+ rset.getString("tb") +
+                        "\",\"tbTreated\":\""+ rset.getString("tbTreated") +
+                        "\",\"tf\":\""+ rset.getString("tf") +
+                        "\",\"tfTreated\":\""+ rset.getString("tfTreated") +
+                        "\",\"time\":\""+ rset.getString("time") +
+                        "\",\"treatmentUsed\":\""+ rset.getString("treatmentUsed") +
+                        "\",\"treatmentYorN\":\""+ rset.getString("treatmentYorN") +
                         "split ";
 
                 //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
