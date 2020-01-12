@@ -37,7 +37,7 @@ public class MyServlet extends HttpServlet {
         LogEntrySerial test = gson.fromJson(reqBody, LogEntrySerial.class);
         LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
         resp.setContentType("text/html");
-        resp.getWriter().write("Thank you client!");
+        resp.getWriter().write("Log saved!");
         req.getServletPath();
         log.info(reqBody);
         System.out.println(test.location);
