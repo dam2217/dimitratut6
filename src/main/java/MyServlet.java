@@ -25,21 +25,7 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         resp.getWriter().write("Hello, world!");
-        try{ Connection conn =  getConnection();
-        Statement s=conn.createStatement();
-        String sqlStr = "SELECT * FROM userdata WHERE id>1";
 
-        ResultSet rset=s.executeQuery(sqlStr);
-        while(rset.next()){
-            String test = rset.getString("date");
-            System.out.println(test);
-            //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
-        }    rset.close();
-        s.close();
-        conn.close();
-        }catch (Exception e){
-            System.out.println("doesn't print");
-        }
     }
 
 
@@ -76,6 +62,21 @@ public class MyServlet extends HttpServlet {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        try{ Connection conn =  getConnection();
+            Statement s=conn.createStatement();
+            String sqlStr = "SELECT * FROM userdata WHERE id>1";
+
+            ResultSet rset=s.executeQuery(sqlStr);
+            while(rset.next()){
+                String testt = rset.getString("date");
+                System.out.println(testt);
+                //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
+            }    rset.close();
+            s.close();
+            conn.close();
+        }catch (Exception e){
+            System.out.println("doesn't print");
         }
     }
 
