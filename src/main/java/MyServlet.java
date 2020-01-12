@@ -38,7 +38,6 @@ public class MyServlet extends HttpServlet {
             System.out.println("why");
             while(rset.next()){
                 System.out.println("f");
-                System.out.println();
                 datasend = datasend+"\"date\":\""+rset.getString("date")+
                         "\",\"time\":\""+ rset.getString("time") +
                        "\",\"hb\":\""+rset.getString("hb")+
@@ -47,7 +46,7 @@ public class MyServlet extends HttpServlet {
                         "\",\"hfTreated\":\""+ rset.getString("hftreated") +
                         "\",\"humidity\":\""+ rset.getString("humidity") +
                         "\",\"lab\":\""+ rset.getString("lab") +
-                        "\",\"labTreated\":\""+ rset.getString("labtreated") +
+//                        "\",\"labTreated\":\""+ rset.getString("labtreated") +
 //                        "\",\"laf\":\""+ rset.getString("laf") +
 //                        "\",\"lafTreated\":\""+ rset.getString("laftreated") +
 //                        "\",\"llb\":\""+ rset.getString("llb") +
