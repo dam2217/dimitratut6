@@ -57,11 +57,11 @@ public class MyServlet extends HttpServlet {
         try {
             Connection conn= getConnection();
             Statement s=conn.createStatement();
-            String sqlStr = "INSERT INTO userdata (hf, hb, tf, tb, raf, rab, laf, lab, " +
+            String sqlStr = "INSERT INTO userdata (date, time, hf, hb, tf, tb, raf, rab, laf, lab, " +
                     "rlf, rlb, llf, llb, treatmentyorn, treatmentused, location, temperature, " +
                     "pollutionlevel, pollenlevel, hftreated, hbtreated, tftreated, tbtreated, " +
                     "raftreated, rabtreated, laftreated, labtreated, rlftreated, rlbtreated, " +
-                    "llftreated, llbtreated, notes) values('"+ test.hf + "','"+ test.hb + "','"+ test.tf +"'," +
+                    "llftreated, llbtreated, notes) values('"+ test.date+ "','"+ test.time +"','"+ test.hf + "','"+ test.hb + "','"+ test.tf +"'," +
                     "'"+ test.tb +"','"+ test.raf +"','"+ test.rab +"','"+ test.laf +"','"+ test.lab +"'," +
                     "'"+ test.rlf +"','"+ test.rlb +"','"+ test.llf +"','"+ test.llb +"','"+ test.treatmentYorN +"'" +
                     ",'"+ test.treatmentUsed +"','"+ test.location +"','"+ test.temperature +"','"+ test.pollutionLevel +"'," +
