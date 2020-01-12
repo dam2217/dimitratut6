@@ -29,7 +29,7 @@ public class MyServlet extends HttpServlet {
         try {
             Connection conn = getConnection();
             Statement s = conn.createStatement();
-            String sqlStr = "SELECT * FROM patients WHERE id >= 1";
+            String sqlStr = "SELECT * FROM userdata WHERE id >= 1";
             s.execute(sqlStr);
         }
         catch (URISyntaxException e) {
