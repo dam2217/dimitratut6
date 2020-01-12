@@ -38,7 +38,7 @@ public class MyServlet extends HttpServlet {
         s.close();
         conn.close();
         }catch (Exception e){
-
+            System.out.println("doesn't print");
         }
     }
 
