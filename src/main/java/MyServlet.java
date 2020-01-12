@@ -88,28 +88,28 @@ public class MyServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try{ Connection conn =  getConnection();
-            Statement s=conn.createStatement();
-            String sqlStr = "SELECT * FROM userdata WHERE id>1";
-
-
-            ResultSet rset=s.executeQuery(sqlStr);
-            String datasend = "{";
-            System.out.println("sql"+sqlStr);
-            while(rset.next()){
-                datasend = datasend + "\"date\":\""+rset.getString("date")+"\",\"time\":\""+
-                        rset.getString("time")+"\" split ";
-
-                //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
-            }
-            datasend = datasend + "}";
-            System.out.println(datasend);
-            rset.close();
-            s.close();
-            conn.close();
-        }catch (Exception e){
-            System.out.println("doesn't print");
-        }
+//        try{ Connection conn =  getConnection();
+//            Statement s=conn.createStatement();
+//            String sqlStr = "SELECT * FROM userdata WHERE id>1";
+//
+//
+//            ResultSet rset=s.executeQuery(sqlStr);
+//            String datasend = "{";
+//            System.out.println("sql"+sqlStr);
+//            while(rset.next()){
+//                datasend = datasend + "\"date\":\""+rset.getString("date")+"\",\"time\":\""+
+//                        rset.getString("time")+"\" split ";
+//
+//                //System.out.println(rset.getInt("id")+" "+ rset.getString("location"));
+//            }
+//            datasend = datasend + "}";
+//            System.out.println(datasend);
+//            rset.close();
+//            s.close();
+//            conn.close();
+//        }catch (Exception e){
+//            System.out.println("doesn't print");
+//        }
     }
 
 
