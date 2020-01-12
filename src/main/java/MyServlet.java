@@ -34,6 +34,7 @@ public class MyServlet extends HttpServlet {
             System.out.println("e");
 
             System.out.println("sql"+sqlStr);
+            System.out.println("Head front" + rset.getString("hf"));
             boolean isItTrue;
             while((isItTrue = rset.next()) == true){
                 System.out.println("f");
