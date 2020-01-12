@@ -39,12 +39,12 @@ public class MyServlet extends HttpServlet {
                 System.out.println("f");
                 System.out.println();
                 datasend = datasend + "\"date\":\""+rset.getString("date")+
-                        "\",\"hb\":\""+ rset.getString("hb")+
-                        "\",\"hbTreated\":\""+ rset.getString("hbTreated")+
-                        "\",\"hf\":\""+ rset.getString("hf") +
-                        "\",\"hfTreated\":\""+ rset.getString("hfTreated") +
-                        "\",\"humidity\":\""+ rset.getString("humidity") +
-                        "\",\"lab\":\""+ rset.getString("lab") +
+//                        "\",\"hb\":\""+ rset.getString("hb")+
+//                        "\",\"hbTreated\":\""+ rset.getString("hbTreated")+
+//                        "\",\"hf\":\""+ rset.getString("hf") +
+//                        "\",\"hfTreated\":\""+ rset.getString("hfTreated") +
+//                        "\",\"humidity\":\""+ rset.getString("humidity") +
+//                        "\",\"lab\":\""+ rset.getString("lab") +
 //                        "\",\"labTreated\":\""+ rset.getString("labTreated") +
 //                        "\",\"laf\":\""+ rset.getString("laf") +
 //                        "\",\"lafTreated\":\""+ rset.getString("lafTreated") +
